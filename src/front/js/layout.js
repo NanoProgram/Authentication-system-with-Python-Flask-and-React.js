@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Singup } from "./pages/Singup.jsx";
 import { Login } from "./pages/Login.jsx";
+import { Sidebar } from "./component/Sidebar.jsx";
 
 //create your first component
 const Layout = () => {
@@ -18,13 +19,17 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
+
+    if (
+        localStorage.getItem("token") == null &&
+        localStorage.getItem("user_id") == null
+      )
     return (
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
-                        <Route element={<Home />} path="/home" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<Singup />} path="/singup" />
@@ -36,6 +41,21 @@ const Layout = () => {
             </BrowserRouter>
         </div>
     );
+    else {
+        return (
+            <div>
+                <BrowserRouter basename={basename}>
+                    <ScrollToTop>
+                        <Navbar />
+                        <Routes>
+                            <Route element={<Home />} path="/home" />
+                        </Routes>
+                        <Footer />
+                    </ScrollToTop>
+                </BrowserRouter>
+            </div>
+        );
+    }
 };
 
 export default injectContext(Layout);

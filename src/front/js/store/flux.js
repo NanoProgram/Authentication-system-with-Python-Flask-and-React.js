@@ -58,6 +58,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  })
 				  .catch((error) => console.log(error));
 			  },
+			  logout: () => {
+				console.log("llamando a logout");
+				localStorage.clear();
+				setStore({ user_id: null });
+			  },
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
