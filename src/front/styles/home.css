@@ -1,7 +1,59 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.login {
+    
+    width: 400px;
+    height: 600px;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.logo {
+    
+    width: 200px;
+    height: 100px;
+    margin: auto;
+}
+
+
+  .form-control {
+    background-color:white(122, 228, 247);
+    border-radius: 30px;
+   
+    padding: 10px 20px;
+  }
+
+  .pildora {
+    border-radius: 999px;
+    background-color: lightgray;
+    padding: 5px 10px;
+    margin: 2px;
+    display: inline-block;
+  }
+
+  .form-control, .form-select {
+    height: 50px;
+    width: 100%;
+    border-radius: 25px;
+    border: 1px solid gray;
+  }
+
+  .badge.rounded-pill {
+    border-radius: 30px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .form-select-sm.rounded-pill {
+    border-radius: 30px;
+    background-color: #f2f2f2;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+    border: none;
+    appearance: none;
+  }
+  
+  input:hover {
+    border: 1px solid #2a07c5;
+    box-shadow: 0 0 10px #0a034e;
+    }
+  
