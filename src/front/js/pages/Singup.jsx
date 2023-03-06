@@ -27,7 +27,7 @@ export const Singup = () => {
     try {
       console.log(input);
       const res = await fetch(
-        "https://3001-nanoprogram-medigeeks-mww1bt06jmk.ws-us85.gitpod.io/api/mediGeeks/users",
+        "https://3001-4geeksacade-reactflaskh-5miqvr1ae3n.ws-us89.gitpod.io/api/users",
         {
           method: "POST",
           headers: {

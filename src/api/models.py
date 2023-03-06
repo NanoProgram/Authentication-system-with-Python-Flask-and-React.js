@@ -3,6 +3,9 @@ import uuid
 
 db = SQLAlchemy()
 
+def random_uuid():
+    return str(uuid.uuid4())
+
 class User(db.Model):
     id = db.Column(db.String(100), primary_key=True, default=random_uuid)
     email = db.Column(db.String(120), unique=True, nullable=False)
