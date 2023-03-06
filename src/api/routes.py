@@ -8,6 +8,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 import uuid
 import re
 from  werkzeug.security import generate_password_hash, check_password_hash
+import json
 
 
 api = Blueprint('api', __name__)
