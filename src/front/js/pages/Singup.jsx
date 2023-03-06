@@ -60,23 +60,6 @@ export const Singup = () => {
           style={{ opacity: 0.8 }}
         >
           
-          <div className="form-outline mb-4 ">
-            <input
-              {...register("name", {
-                required: "Se requiere nombre y apellido",
-                pattern: {
-                  value:
-                    /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
-                  message: "Nombre no es valido",
-                },
-              })}
-              placeholder="Nombre Apellido"
-              type="userName"
-              id="form2Example10"
-              class="form-control text-center"
-            />
-            <p style={{ color: "red" }}>{errors.name?.message}</p>
-          </div>
           <div className="form-outline mb-4">
             <input
               {...register("email", {

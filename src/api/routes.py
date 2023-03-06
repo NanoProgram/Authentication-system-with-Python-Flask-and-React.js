@@ -6,6 +6,7 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 import uuid
+import re
 from  werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -57,16 +58,18 @@ def login():
         {'WWW-Authenticate' : 'Basic realm ="Usuario o contraseña incorrectos !!"'}
     )
 
+@api.route('/users', methods=['GET'])
+def get_users_table():
+    user = User.query.all()
+    user = list(map(lambda p:p.serialize(),user))
+    return jsonify(user), 200 
 
 @api.route('/users', methods=['POST'])
 def create_user():
     request_body = request.get_json()
-    name = request_body.get("name")
     email = request_body.get("email")
     password = request_body.get("password")
     errors = {}
-    if not name or not re.match(r"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+(?: [a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)*$", name):
-        errors["name"] = "Name should only contain letters, spaces and some accented characters"
     if not email or not re.match(r"^(([^<>()[\],;:\s@']+(\.[^<>()[\],;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$", email):
         errors["email"] = "Invalid email address"
     if not password or not re.match(r"^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$", password):

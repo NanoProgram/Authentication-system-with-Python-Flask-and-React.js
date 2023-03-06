@@ -9,7 +9,7 @@ def random_uuid():
 class User(db.Model):
     id = db.Column(db.String(100), primary_key=True, default=random_uuid)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
+    password = db.Column(db.String(200), unique=False, nullable=False)
 
     def __repr__(self):
         return f'<User {self.email}>'
